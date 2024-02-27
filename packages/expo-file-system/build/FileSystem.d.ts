@@ -6,6 +6,12 @@ import { DownloadOptions, DownloadPauseState, FileSystemNetworkTaskProgressCallb
  */
 export declare const documentDirectory: string | null;
 /**
+ * `file://` URI pointing to the directory where library files for this app will be stored.
+ * Files stored here will remain until explicitly deleted by the app. Ends with a trailing `/`.
+ * Example uses are for files the user saves that they expect to see again.
+ */
+export declare const libraryDirectory: string | null;
+/**
  * `file://` URI pointing to the directory where temporary files used by this app will be stored.
  * Files stored here may be automatically deleted by the system when low on storage.
  * Example uses are for downloaded or generated files that the app just needs for one-time usage.

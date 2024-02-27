@@ -5,6 +5,9 @@ const platformModule = {
     get documentDirectory() {
         return null;
     },
+    get libraryDirectory() {
+        return null;
+    },
     get cacheDirectory() {
         return null;
     },

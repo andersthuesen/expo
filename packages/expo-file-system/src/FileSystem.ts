@@ -48,6 +48,13 @@ function normalizeEndingSlash(p: string | null): string | null {
 export const documentDirectory = normalizeEndingSlash(ExponentFileSystem.documentDirectory);
 
 /**
+ * `file://` URI pointing to the directory where library files for this app will be stored.
+ * Files stored here will remain until explicitly deleted by the app. Ends with a trailing `/`.
+ * Example uses are for files the user saves that they expect to see again.
+ */
+export const libraryDirectory = normalizeEndingSlash(ExponentFileSystem.libraryDirectory);
+
+/**
  * `file://` URI pointing to the directory where temporary files used by this app will be stored.
  * Files stored here may be automatically deleted by the system when low on storage.
  * Example uses are for downloaded or generated files that the app just needs for one-time usage.

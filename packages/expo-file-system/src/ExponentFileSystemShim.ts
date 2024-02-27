@@ -7,6 +7,9 @@ const platformModule: ExponentFileSystemModule = {
   get documentDirectory(): string | null {
     return null;
   },
+  get libraryDirectory(): string | null {
+    return null;
+  },
   get cacheDirectory(): string | null {
     return null;
   },

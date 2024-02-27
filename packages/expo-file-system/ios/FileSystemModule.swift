@@ -18,6 +18,10 @@ public final class FileSystemModule: Module {
     return appContext?.config.documentDirectory
   }
 
+    private var libraryDirectory: URL? {
+    return appContext?.config.libraryDirectory
+  }
+
   private var cacheDirectory: URL? {
     return appContext?.config.cacheDirectory
   }
@@ -29,6 +33,7 @@ public final class FileSystemModule: Module {
     Constants {
       return [
         "documentDirectory": documentDirectory?.absoluteString,
+        "libraryDirectory": libraryDirectory?.absoluteString,
         "cacheDirectory": cacheDirectory?.absoluteString,
         "bundleDirectory": Bundle.main.bundlePath
       ]

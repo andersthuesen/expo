@@ -13,13 +13,15 @@ public class FileSystemLegacyUtilities: NSObject, EXInternalModule, EXFileSystem
   var isScoped: Bool = false
 
   @objc
-  public init(documentDirectory: String, cachesDirectory: String) {
+  public init(documentDirectory: String, libraryDirectory: String, cachesDirectory: String) {
     self.documentDirectory = documentDirectory
+    self.libraryDirectory = libraryDirectory
     self.cachesDirectory = cachesDirectory
     self.isScoped = true
 
     super.init()
     ensureDirExists(withPath: self.cachesDirectory)
+    ensureDirExists(withPath: self.libraryDirectory)
     ensureDirExists(withPath: self.documentDirectory)
   }
 
@@ -27,11 +29,15 @@ public class FileSystemLegacyUtilities: NSObject, EXInternalModule, EXFileSystem
     let documentPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
     self.documentDirectory = documentPaths[0]
 
+    let libraryPaths = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)
+    self.libraryDirectory = libraryPaths[0]
+
     let cachesPaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
     self.cachesDirectory = cachesPaths[0]
 
     super.init()
     ensureDirExists(withPath: self.cachesDirectory)
+    ensureDirExists(withPath: self.libraryDirectory)
     ensureDirExists(withPath: self.documentDirectory)
   }
 
@@ -84,7 +90,7 @@ public class FileSystemLegacyUtilities: NSObject, EXInternalModule, EXFileSystem
 
   @objc
   public func getInternalPathPermissions(_ url: URL) -> EXFileSystemPermissionFlags {
-    let scopedDirs: [String] = [cachesDirectory, documentDirectory]
+    let scopedDirs: [String] = [cachesDirectory, libraryDirectory, documentDirectory]
     let standardizedPath = url.standardized.path
     for scopedDirectory in scopedDirs {
       if standardizedPath.hasPrefix(scopedDirectory + "/") || standardizedPath == scopedDirectory {

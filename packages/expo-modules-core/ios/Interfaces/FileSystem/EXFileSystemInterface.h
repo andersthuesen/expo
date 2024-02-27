@@ -12,6 +12,7 @@ typedef NS_OPTIONS(unsigned int, EXFileSystemPermissionFlags) {
 @protocol EXFileSystemInterface
 
 @property (nonatomic, readonly) NSString *documentDirectory;
+@property (nonatomic, readonly) NSString *libraryDirectory;
 @property (nonatomic, readonly) NSString *cachesDirectory;
 
 // TODO: Move permissionsForURI to EXFileSystemManagerInterface

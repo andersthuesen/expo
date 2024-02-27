@@ -64,7 +64,7 @@ public struct FileSystemUtilities {
       return [.none]
     }
 
-    let scopedDirs = [appContext.config.cacheDirectory, appContext.config.documentDirectory]
+    let scopedDirs = [appContext.config.cacheDirectory, appContext.config.libraryDirectory, appContext.config.documentDirectory]
     let standardizedPath = url.standardized.path
 
     for dir in scopedDirs {
